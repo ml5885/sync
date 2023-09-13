@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Form</title>
+</head>
+<body>
+    <div>
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            <label for="fileInput">Upload a file:</label>
+            <input type="file" name="file" id="fileInput" required>
+            <br><br>
+
+            <label for="jobDescription">Job Description:</label>
+            <textarea rows="5" cols="60" type="text" name="jobDescription" id="jobDescription" required></textarea>
+            <br><br>
+
+            <label for="xmlResume">XML Resume:</label>
+            <textarea rows="5" cols="60" type="text" name="xmlResume" id="xmlResume" required></textarea>
+            <br><br>
+
+            <label for="ideology">Ideology:</label>
+            <textarea rows="5" cols="60" type="text" name="ideology" id="ideology" required></textarea>
+            <br><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
