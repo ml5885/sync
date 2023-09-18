@@ -6,6 +6,8 @@
 body {
 	font-family: "Satoshi Variable";
 	background-color: #fefaf5;
+	color: #333333;
+	margin: 50px 0px;
 }
 
 .wrapper {
@@ -19,9 +21,12 @@ body {
 	font-weight: 500;
 }
 
+.form-control-file {
+	cursor: pointer;
+}
+
 form {
 	font-size: 20px;
-	color: #333333;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -33,7 +38,9 @@ label {
 }
 
 .form-group {
-	/* border: 1px solid black; */
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
 	padding: 10px 0px;
 }
 
