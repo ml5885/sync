@@ -20,7 +20,7 @@ def submit():
     print(job_desc)
     print(xml_res)
     print(ideo)
-    return render_template("index.html")
+    return render_template("html/index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
