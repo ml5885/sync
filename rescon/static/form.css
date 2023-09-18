@@ -1,0 +1,23 @@
+@font-face {
+	font-family: "Satoshi Variable";
+	src: url("../static/fonts/Satoshi-Variable.ttf") format("truetype-variations");
+}
+
+body {
+	font-family: "Satoshi Variable";
+}
+
+form {
+	font-size: 20px;
+	color: #333333;
+}
+
+.form-group {
+	/* border: 1px solid black; */
+	padding: 10px;
+}
+
+.form-group textarea {
+	border-radius: 0;
+	border: 1px solid black;
+}
