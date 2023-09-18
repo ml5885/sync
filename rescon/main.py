@@ -4,11 +4,11 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("index.html")
+    return render_template("html/index.html")
 
 @app.route("/form", methods=["GET"])
 def form():
-    return render_template("form.html")
+    return render_template("html/form.html")
 
 @app.route("/submit", methods=["POST"])
 def submit():
