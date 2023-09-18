@@ -47,4 +47,13 @@ label {
 .form-group textarea {
 	border-radius: 0;
 	border: 1px solid black;
+	background-color: transparent;
+	resize: none;
+}
+
+.form-group textarea.form-control:focus {
+	outline: none !important;
+	box-shadow: none;
+	border: 1px solid black;
+	background-color: transparent;
 }
