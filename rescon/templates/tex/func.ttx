@@ -30,69 +30,76 @@
 \begin{rSection}{SKILLS}
 
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{2ex}} l }
-{% begin skills %}
+{% DATA %}
 Languages & Python, Java, JavaScript, SQL, HTML, CSS, C++, C, Swift, GraphQL, Rust\\
 Data Technology & PostgreSQL, SQLite, MySQL, Firebase, Faker (Data Generation), Selenium\\
 Frameworks & Flask, Django, FastAPI, SQLAlchemy, Okta, React, Vue, TensorFlow, PyTorch, SKLearn, OpenCV\\
 Development Tools & Git, Figma, VSCode, Eclipse, Android Studio, XCode, Unity, SparkAR, Postman, Insomnia
-{% end skills %}
+{% DATA %}
 \end{tabular}
 \end{rSection}
 {% end tag skills %}
 
 {% begin tag experiences %}
 \begin{rSection}{EXPERIENCE}
+{% begin tag experience %}
 \textbf{Full Stack Engineering Intern}, DocuSign Inc. \hfill \textit{San Francisco, CA} $\bullet$ May 2023 - August 2023
 \vspace{-2mm}
 \begin{itemize}
-    \itemsep -6pt {}
-    {% begin experience %}
-    \item Created a full-featured internal tool that helps IT professionals find information to assist employees and resolve tickets.
-    \item Added functionality for DocuSign app administrators to create criteria and apply them to employees seamlessly.
-    \item Used \textbf{Django} and \textbf{Vue}, deployed to \textbf{AWS}, added \textbf{Okta} authorization, and optimized \textbf{SQL Server} queries (\(\sim \)6x speed up).
-    \item Implemented \textbf{Identity and Access Management (IAM)} protocols, enhancing user security and resource accessibility.
-    \item Improved Mean Time To Resolve from \(\sim \)29 hours per ticket to \(\sim \)3 hours per ticket (\(\sim \)10x speed up).
-    \item Demo-ed to VP of Global IT and Chief Information Officer of DocuSign. 
-    {% end experience %}
+\itemsep -6pt {}
+{% DATA %}
+\item Created a full-featured internal tool that helps IT professionals find information to assist employees and resolve tickets.
+\item Added functionality for DocuSign app administrators to create criteria and apply them to employees seamlessly.
+\item Used \textbf{Django} and \textbf{Vue}, deployed to \textbf{AWS}, added \textbf{Okta} authorization, and optimized \textbf{SQL Server} queries (\(\sim \)6x speed up).
+\item Implemented \textbf{Identity and Access Management (IAM)} protocols, enhancing user security and resource accessibility.
+\item Improved Mean Time To Resolve from \(\sim \)29 hours per ticket to \(\sim \)3 hours per ticket (\(\sim \)10x speed up).
+\item Demo-ed to VP of Global IT and Chief Information Officer of DocuSign. 
+{% DATA %}
 \end{itemize}
+{% end tag experience %}
 \vspace{-1mm}
+{% begin tag experience %}
 \textbf{Chief Executive Officer}, Locab Inc. \hfill \textit{Remote} $\bullet$ May 2021 - March 2022
 \vspace{-2mm}
 \begin{itemize}
-    \itemsep -6pt {}
-    {% begin experience %}
-    \item Led 8 people in creating an \textbf{NLP}-based extension that provides company-dictated feedback on a person’s writing.
-    \item Used \textbf{Attention-based Transformers}, \textbf{Deep Averaging Networks}, and Google's \textbf{PEGASUS} model to provide feedback.
-    \item Personally developed \textbf{Flask} backend server, trained NLP models and optimized server runtime performance (100x speed up).
-    \item Maintained team performance through \textbf{Trello Boards}, \textbf{Agile Sprints}, and scheduled work and design review meetings.
-    \item Received offer from Uber's copywriting division.
-    {% end experience %}
+\itemsep -6pt {}
+{% DATA %}
+\item Led 8 people in creating an \textbf{NLP}-based extension that provides company-dictated feedback on a person’s writing.
+\item Used \textbf{Attention-based Transformers}, \textbf{Deep Averaging Networks}, and Google's \textbf{PEGASUS} model to provide feedback.
+\item Personally developed \textbf{Flask} backend server, trained NLP models and optimized server runtime performance (100x speed up).
+\item Maintained team performance through \textbf{Trello Boards}, \textbf{Agile Sprints}, and scheduled work and design review meetings.
+\item Received offer from Uber's copywriting division.
+{% DATA %}
 \end{itemize}
+{% end tag experience %}
 \vspace{-1mm}
+{% begin tag experience %}
 \textbf{Researcher}, Teachable AI Lab \hfill \textit{Atlanta, GA} $\bullet$ August 2022 - Present
 \vspace{-2mm}
 \begin{itemize}
-    \itemsep -6pt {}
-    {% begin experience %}
-    \item Working with Prof. MacLellan and 7 graduate students on \textbf{Cognitive AI} systems, human-like \textbf{AI/ML} models.
-    \item Adapting \textbf{COBWEB}, an incremental conceptual clustering system, for use in \textbf{language modeling}.
-    \item Optimized prior \textbf{Python} implementation of COBWEB (\(\sim \)25x speed up).
-    \item Developed \textbf{C++} implementation of COBWEB for better runtime performance (\(\sim \)100x speed up).
-    \item Researching \textbf{Inverse Reinforcement Learning (IRL)} and \textbf{AI Planning} to create agents that plan and behave like humans.
-    {% end experience %}
+\itemsep -6pt {}
+{% DATA %}
+\item Working with Prof. MacLellan and 7 graduate students on \textbf{Cognitive AI} systems, human-like \textbf{AI/ML} models.
+\item Adapting \textbf{COBWEB}, an incremental conceptual clustering system, for use in \textbf{language modeling}.
+\item Optimized prior \textbf{Python} implementation of COBWEB (\(\sim \)25x speed up).
+\item Developed \textbf{C++} implementation of COBWEB for better runtime performance (\(\sim \)100x speed up).
+\item Researching \textbf{Inverse Reinforcement Learning (IRL)} and \textbf{AI Planning} to create agents that plan and behave like humans.
+{% DATA %}
 \end{itemize}
+{% end tag experience %}
 \vspace{-1mm}
+{% begin tag experience %}
 \textbf{Software Engineering Intern}, Kinetic Reality Inc. \hfill \textit{Sunnyvale, CA} $\bullet$ June 2021 - October 2021
 \vspace{-2mm}
 \begin{itemize}
-    \itemsep -6pt {}
-    {% begin experience %}
-    \item Developed an \textbf{iOS}-based \textbf{AR} app using \textbf{Swift} that records and sends \textbf{LiDAR} data about body movement to server.
-    \item Aimed to improve athletic performance by comparing simulated vs. actual motion.
-    \item Used to beta-test the desktop app prior to the Series-C funding round.
-    {% end experience %}
+\itemsep -6pt {}
+{% DATA %}
+\item Developed an \textbf{iOS}-based \textbf{AR} app using \textbf{Swift} that records and sends \textbf{LiDAR} data about body movement to server.
+\item Aimed to improve athletic performance by comparing simulated vs. actual motion.
+\item Used to beta-test the desktop app prior to the Series-C funding round.
+{% DATA %}
 \end{itemize}
-
+{% end tag experience %}
 \end{rSection}
 {% end tag experiences %}
 
@@ -103,25 +110,35 @@ Development Tools & Git, Figma, VSCode, Eclipse, Android Studio, XCode, Unity, S
 {% begin tag projects %}
 \begin{rSection}{PROJECTS}
 \vspace{-1em}
-{% begin project %}
+{% begin tag project %}
+{% DATA %}
 \item \textbf{Quibble} {Spearheaded the development of an \textbf{AI}-powered learning acceleration tool, providing students with user-friendly access to high-quality resources through an intuitive \textbf{UI}.} \href{https://quibble.webflow.io/}{(Check out our landing page!)}
-{% end project %}
+{% DATA %}
+{% end tag project %}
 \vspace{-1.75mm}
-{% begin project %}
+{% begin tag project %}
+{% DATA %}
 \item \textbf{AnimeQ} {Developed an \textbf{ML}-based algorithm utilizing \textbf{PyTorch} to create and train an \textbf{Attention-based CNN Sparse-VAE} to determine the suitability of manga for anime adaptation.}
-{% end project %}
+{% DATA %}
+{% end tag project %}
 \vspace{-1.75mm}
-{% begin project %}
+{% begin tag project %}
+{% DATA %}
 \item \textbf{Ludis} {Directed the creation of a sports-focused social networking site, utilizing \textbf{Flask}, \textbf{Python}, and \textbf{PostgreSQL} for backend development, fostering connections among users with shared sporting interests.}
-{% end project %}
+{% DATA %}
+{% end tag project %}
 \vspace{-1.75mm}
-{% begin project %}
+{% begin tag project %}
+{% DATA %}
 \item \textbf{IFF} {Developed \textbf{NLP}-based browser extension using \textbf{Python}, \textbf{Flask}, \textbf{React} and \textbf{TensorFlow} to detect political bias in news articles with 83.4\% accuracy. Deployed on \textbf{Google Cloud Platform}. Available on the Google Web Store with a 5-star rating. Continuously enhancing its Machine Learning features and information display.}
-{% end project %}
+{% DATA %}
+{% end tag project %}
 \vspace{-1.75mm}
-{% begin project %}
+{% begin tag project %}
+{% DATA %}
 \item \textbf{ClassNet} {Implemented a \textbf{Computer Vision} model using \textbf{TensorFlow} employing hierarchical classification with a tree of \textbf{CNN} classifiers, resulting in increased prediction accuracy and reduced computational complexity. Achieved 98.7\% accuracy on Mini ImageNet dataset.}
-{% end project %}
+{% DATA %}
+{% end tag project %}
 \end{rSection} 
 {% end tag projects %}
 
