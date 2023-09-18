@@ -3,9 +3,19 @@
 	src: url("../static/fonts/Satoshi-Variable.ttf") format("truetype-variations");
 }
 
+:root {
+	--background-color: #fefaf5;
+	--black: #333333;
+}
+
 body {
 	font-family: "Satoshi Variable";
-	background-color: #fefaf5;
+	background-color: var(--background-color);
+	color: var(--black);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
 }
 
 .wrapper {
@@ -17,27 +27,59 @@ body {
 .wrapper h1 {
 	font-size: 100px;
 	font-weight: 500;
+	margin-bottom: 50px;
+}
+
+.form-control-file {
+	cursor: pointer;
 }
 
 form {
 	font-size: 20px;
-	color: #333333;
 	display: flex;
 	flex-direction: column;
-	align-items: stretch;
+	align-items: center;
+}
+
+form button.button {
+	color: var(--background-color);
+	background-color: var(--black);
+	width: 200px;
+	cursor: pointer;
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+}
+
+form hr {
+	border-top: 1px solid var(--black);
+	width: 100%;
 }
 
 label {
 	font-size: 25px;
-	font-weight: 500;
+	font-weight: 400;
 }
 
 .form-group {
-	/* border: 1px solid black; */
-	padding: 10px 0px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .form-group textarea {
-	border-radius: 0;
-	border: 1px solid black;
+	border-radius: 5px;
+	border: 1px solid var(--black);
+	background-color: transparent;
+	resize: none;
+}
+
+.form-group textarea.form-control:focus {
+	outline: none !important;
+	box-shadow: none;
+	border: 1px solid var(--black);
+	background-color: transparent;
 }
