@@ -5,12 +5,13 @@
 
 :root {
 	--background-color: #fefaf5;
+	--black: #333333;
 }
 
 body {
 	font-family: "Satoshi Variable";
 	background-color: var(--background-color);
-	color: #333333;
+	color: var(--black);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -42,29 +43,36 @@ form {
 
 form button.button {
 	color: var(--background-color);
-	background-color: black;
+	background-color: var(--black);
 	width: 200px;
 	cursor: pointer;
 	padding: 5px;
 	border: none;
+	border-radius: 5px;
+}
+
+form hr {
+	border-top: 1px solid var(--black);
+	width: 100%;
 }
 
 label {
 	font-size: 25px;
-	font-weight: 500;
+	font-weight: 400;
 }
 
 .form-group {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	padding: 10px 0px;
 	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .form-group textarea {
-	border-radius: 0;
-	border: 1px solid black;
+	border-radius: 5px;
+	border: 1px solid var(--black);
 	background-color: transparent;
 	resize: none;
 }
@@ -72,6 +80,6 @@ label {
 .form-group textarea.form-control:focus {
 	outline: none !important;
 	box-shadow: none;
-	border: 1px solid black;
+	border: 1px solid var(--black);
 	background-color: transparent;
 }
