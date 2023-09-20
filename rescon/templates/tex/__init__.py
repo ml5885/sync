@@ -11,7 +11,7 @@ def find_parent(root, child):
             return parent
     return None
 
-def handle_tag(tag_line, curr, q, data, root):
+def handle_tag_convert(tag_line, curr, q, data, root):
     if "begin" in tag_line:
         q.append(tag_line.split()[-1])
         curr = ET.SubElement(curr, q[-1])
@@ -25,13 +25,14 @@ def handle_tag(tag_line, curr, q, data, root):
         return curr, q, data, root
     raise InvalidTagError()
 
+
 class InvalidTagError(Exception):
     pass
 
 class TexTemplate:
     
     def __init__(self, filepath) -> None:
-        self.file = open(filepath, "r")
+        self.filepath = filepath
 
     def _convert_to_xml(self, lines):
         
@@ -47,7 +48,7 @@ class TexTemplate:
                 line = line[2:-2].strip()
                 if "tag" in line:
                     try:
-                        curr, q, data, root = handle_tag(line, curr, q, data, root)
+                        curr, q, data, root = handle_tag_convert(line, curr, q, data, root)
                     except InvalidTagError as e:
                         print(ET.tostring(root))
                 elif "DATA" in line:
@@ -59,47 +60,47 @@ class TexTemplate:
         
         return root
 
-    def _update_tex_with_xml(self, lines):
-        
-        root = ET.Element("resume")
-        curr = root
-        q = []
-        i = 0
-        data = {"en": False, "stored": []}
-
-        while i < len(lines):
-            line = lines[i].strip()
-            if re.match("^{%.*%}$", line):
-                line = line[2:-2].strip()
-                if "tag" in line:
-                    try:
-                        curr, q, data, root = handle_tag(line, curr, q, data, root)
-                    except InvalidTagError as e:
-                        print(ET.tostring(root))
-                elif "DATA" in line:
-                    data["en"] = not data["en"]
+    def _update_tex_with_xml(self, lines, root):
+        ttx = []
+        i = j = 0
+        for n in root.iter():
+            if n.text.isspace(): continue
+            print((n.text).encode("utf-8"))
+            while i < len(lines):
+                line = lines[i].strip()
+                if line == "{% DATA %}":
+                    k = i + 1
+                    while lines[k].strip() != "{% DATA %}": k += 1
+                    ttx.extend(lines[j:i])
+                    ttx.append(n.text)
+                    j = k + 1
+                    i = k
                 i += 1
-                continue
-            if data["en"]: data["stored"].append(line)
-            i += 1
-        
-        return True
+        print("".join(ttx))
 
     def build(self):
-        lines = self.file.readlines()
+        file = open(self.filepath, "r")
+        lines = file.readlines()
         return self._convert_to_xml(lines)
 
     def modify(self, xml):
-        lines = self.file.readlines()
-        return self._update_tex_with_xml(lines)
+        file = open(self.filepath, "r")
+        lines = file.readlines()
+        return self._update_tex_with_xml(lines, xml)
         
-        
+    
 
+import re
 
 def main():
     ttm = TexTemplate("/home/tanush/Programming/Projects/rescon/rescon/templates/tex/func.ttx")
-    root = ttm.build()
-    print(MD.parseString(ET.tostring(root).decode()).toprettyxml())
+    # ttx = "".join(ttm.file.readlines())
+    # print(ttx[ttx.find("{% begin tag"): ttx.find("{% begin tag") + 100])
+    # print(re.match("^{%.*%}$", ttx))
+    # print(ttx)
+    f = open("/home/tanush/Programming/Projects/rescon/rescon/templates/tex/tmp.xml", "r")
+    et_xml = ET.fromstring(f.read())
+    ttm.modify(et_xml)
 
 if __name__ == "__main__":
     main()
