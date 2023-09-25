@@ -3,8 +3,7 @@ from collections import defaultdict
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as MD
 from datetime import datetime
-from rescon import IN_DIR, OUT_DIR
-from rescon.rescon.formats import Template
+from ..formats import Template, IN_DIR, OUT_DIR
 
 
 def find_parent(root, child):
