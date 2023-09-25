@@ -2,7 +2,10 @@ import re
 from collections import defaultdict
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as MD
-from ..formats import Template
+from datetime import datetime
+from rescon import IN_DIR, OUT_DIR
+from rescon.rescon.formats import Template
+
 
 def find_parent(root, child):
     for parent in root.iter():
@@ -34,7 +37,7 @@ class InvalidTagError(Exception):
 
 class TEXTemplate(Template):
     
-    def __init__(self, rf, wf) -> None:
+    def __init__(self, rf = IN_DIR, wf = OUT_DIR) -> None:
         self.filepath = [rf, wf]
 
     def _convert_to_xml(self, lines):

@@ -1,8 +1,4 @@
 from abc import ABC, abstractmethod
-import pathlib
-
-WF_DIR = ""
-RF_DIR = ""
 
 class Template(ABC):
 
