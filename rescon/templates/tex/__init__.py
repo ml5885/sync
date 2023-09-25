@@ -67,7 +67,6 @@ class TexTemplate:
         i = j = 0
         for n in root.iter():
             if n.text.isspace(): continue
-            print((n.text).encode("utf-8"))
             while i < len(lines):
                 line = lines[i].strip()
                 if line == "{% DATA %}":
@@ -91,12 +90,11 @@ class TexTemplate:
         file = open(self.filepath, "r")
         lines = file.readlines()
         tex = self._update_tex_with_xml(lines, xml)
-        print(tex)
         wf.write(tex)
         
     
 
-import os
+import subprocess
 
 def main():
     ttm = TexTemplate("/home/tanush/Programming/Projects/rescon/rescon/templates/tex/func.ttx")
@@ -108,7 +106,7 @@ def main():
     wf = open("/home/tanush/Programming/Projects/rescon/rescon/templates/tex/CATERED.tex", "w")
     et_xml = ET.fromstring(rf.read())
     ttm.modify(et_xml, wf)
-    os.system(f"pdflatex /home/tanush/Programming/Projects/rescon/rescon/templates/tex/CATERED.tex")
+    subprocess.Popen(["./generate_pdf.sh"], shell=True)
 
 if __name__ == "__main__":
     main()
