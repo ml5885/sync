@@ -12,6 +12,8 @@ SYSTEM_TEMPLATE = dedent('''\
     Each experience given, project and skills should be around the same length as the input. \
     If you understand this, say "Done".''')
 
+AGENT_RESPONSE = "Done."
+
 DATA_TEMPLATE = PromptTemplate.from_template(
     dedent('''\
         ```description
