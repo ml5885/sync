@@ -15,17 +15,22 @@
 	<body>
 		<div class="wrapper">
 			<h1>ResCon</h1>
-			<form action="/submit" method="post" enctype="multipart/form-data">
+			<form
+				action="/submit"
+				method="post"
+				enctype="multipart/form-data"
+				class="form-content"
+			>
 				<div class="form-group">
-					<label for="fileInput">Upload a file</label>
+					<label for="file">Upload a file</label>
 					<input
 						type="file"
 						class="form-control-file"
-						id="fileInput"
+						id="file"
+						name="file"
 						required
 					/>
 				</div>
-				<hr />
 				<div class="form-group">
 					<label for="jobDescription">Job Description</label>
 					<textarea
@@ -36,7 +41,6 @@
 						required
 					></textarea>
 				</div>
-				<hr />
 				<div class="form-group">
 					<label for="ideology">Ideology:</label>
 					<textarea

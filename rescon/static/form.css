@@ -4,28 +4,35 @@
 }
 
 :root {
-	--background-color: #fefaf5;
-	--black: #333333;
+	/* --background-color: #fefaf5; */
+	--background-color: #f1f0e7;
+	--highlight-color: #4870a9;
+	--font-color: #f1f0e7;
 }
 
 body {
 	font-family: "Satoshi Variable";
 	background-color: var(--background-color);
-	color: var(--black);
+	color: var(--font-color);
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	align-items: stretch;
+	justify-content: space-evenly;
 	height: 100vh;
+	padding: 30px;
 }
 
 .wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	background-color: var(--highlight-color);
+	height: 100%;
+	width: 100%;
 }
 
 .wrapper h1 {
-	font-size: 100px;
+	font-size: 140px;
 	font-weight: 500;
 	margin-bottom: 50px;
 }
@@ -42,17 +49,18 @@ form {
 }
 
 form button.button {
-	color: var(--background-color);
-	background-color: var(--black);
+	color: var(--highlight-color);
+	background-color: var(--font-color);
 	width: 200px;
 	cursor: pointer;
 	padding: 5px;
 	border: none;
 	border-radius: 5px;
+	font-size: 25px;
 }
 
 form hr {
-	border-top: 1px solid var(--black);
+	border-top: 1px solid var(--font-color);
 	width: 100%;
 }
 
@@ -67,19 +75,21 @@ label {
 	align-items: stretch;
 	width: 100%;
 	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 }
 
 .form-group textarea {
 	border-radius: 5px;
-	border: 1px solid var(--black);
+	border: 1.5px solid var(--font-color);
 	background-color: transparent;
 	resize: none;
+	color: var(--font-color);
 }
 
 .form-group textarea.form-control:focus {
 	outline: none !important;
 	box-shadow: none;
-	border: 1px solid var(--black);
+	border: 1.5px solid var(--font-color);
 	background-color: transparent;
+	color: var(--font-color);
 }

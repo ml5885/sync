@@ -13,14 +13,12 @@ def form():
 @app.route("/submit", methods=["POST"])
 def submit():
     job_desc = request.form["jobDescription"]
-    xml_res = request.form["xmlResume"]
     ideo = request.form["ideology"]
-    resume = request.files["file"].read()
+    resume = request.files["file"]
     print(resume)
     print(job_desc)
-    print(xml_res)
     print(ideo)
-    return render_template("html/index.html")
+    return render_template("html/index.html", data=job_desc)
 
 if __name__ == "__main__":
     app.run(debug=True)
