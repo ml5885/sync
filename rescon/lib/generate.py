@@ -11,9 +11,13 @@ from .prompt import (
     DATA_TEMPLATE
 )
 
+TOKENS = ["<", ">"]
+
 def _parse_xml(str_xml):
     et_xml = None
     try:
+        str_xml = str_xml[str_xml.find(TOKENS[0]):str_xml.rfind(TOKENS[1])+1]
+        print(str_xml)
         et_xml = ET.fromstring(str_xml)
     except Exception as e:
         print(e)

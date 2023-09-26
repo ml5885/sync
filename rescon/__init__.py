@@ -1,3 +1,3 @@
 from pathlib import Path
 
-BASE_DIR = Path(__file__)
+BASE_DIR = Path(__file__).parent

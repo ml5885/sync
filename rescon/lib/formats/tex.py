@@ -3,7 +3,7 @@ from collections import defaultdict
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as MD
 from datetime import datetime
-from ..formats import Template, IN_DIR, OUT_DIR
+from ..formats import Template, TEX_DIR
 
 
 def find_parent(root, child):
@@ -88,7 +88,7 @@ class TEXTemplate(Template):
         return self._convert_to_xml(lines)
 
     def modify(self, lines, xml):
-        wf = open(f"{OUT_DIR}/{self.wfp}.tex", "r")
+        wf = open(f"{TEX_DIR}/{self.wfp}.tex", "r")
         tex = self._update_tex_with_xml(lines, xml)
         wf.write(tex)
         wf.close()       

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from rescon import BASE_DIR
 
-TEX_DIR = BASE_DIR + "/templates/tex"
+TEX_DIR = str(BASE_DIR) + "/templates/tex"
 
 class Template(ABC):
 
