@@ -14,7 +14,7 @@ def form():
 def submit():
     job_desc = request.form["jobDescription"]
     ideo = request.form["ideology"]
-    resume = request.files["file"]
+    resume = request.files["file"].read()
     print(resume)
     print(job_desc)
     print(ideo)
