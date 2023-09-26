@@ -14,11 +14,9 @@ def form():
 def submit():
     job_desc = request.form["jobDescription"]
     ideo = request.form["ideology"]
-    resume = request.files["file"].read()
+    resume = request.files["file"].read().decode('utf-8')
     print(resume)
-    print(job_desc)
-    print(ideo)
-    return render_template("html/result.html", data=job_desc)
+    return render_template("html/result.html", data=resume)
 
 if __name__ == "__main__":
     app.run(debug=True)
