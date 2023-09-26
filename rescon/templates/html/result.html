@@ -11,29 +11,11 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="../../static/index.css" />
+		<link rel="stylesheet" href="../../static/form.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="../../static/background-color.js"></script>
 	</head>
 	<body>
-		<div class="wrapper">
-			<h1>Rescon</h1>
-			<div class="info">
-				<h2>How it works</h2>
-
-				<p>Our custom template language uses three kinds of tags</p>
-				<ul>
-					<li>
-						{{"{% begin tag [tag name] %}"}} ... {{"{% end tag [tag name] %}"}}
-						<br />Groups related content blocks
-					</li>
-					<li>
-						{{"{% DATA %}"}} ... {{"{% DATA %}"}}
-						<br />Groups data to be tailored
-					</li>
-				</ul>
-				<p><i>Important: Your resume must be in the .ttx format!</i></p>
-				<a href="/form" class="button">Try Now</a>
-			</div>
-		</div>
+		<div>{{ data }}</div>
 	</body>
 </html>

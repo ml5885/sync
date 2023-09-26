@@ -1,42 +1,3 @@
-@font-face {
-	font-family: "Satoshi Variable";
-	src: url("../static/fonts/Satoshi-Variable.ttf") format("truetype-variations");
-}
-
-:root {
-	/* --background-color: #fefaf5; */
-	--background-color: #f1f0e7;
-	--highlight-color: #4870a9;
-	--font-color: #f1f0e7;
-}
-
-body {
-	font-family: "Satoshi Variable";
-	background-color: var(--background-color);
-	color: var(--font-color);
-	display: flex;
-	align-items: stretch;
-	justify-content: space-evenly;
-	height: 100vh;
-	padding: 30px;
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--highlight-color);
-	height: 100%;
-	width: 100%;
-}
-
-.wrapper h1 {
-	font-size: 140px;
-	font-weight: 500;
-	margin-bottom: 50px;
-}
-
 .form-control-file {
 	cursor: pointer;
 }
@@ -46,17 +7,6 @@ form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-form button.button {
-	color: var(--highlight-color);
-	background-color: var(--font-color);
-	width: 200px;
-	cursor: pointer;
-	padding: 5px;
-	border: none;
-	border-radius: 5px;
-	font-size: 25px;
 }
 
 form hr {

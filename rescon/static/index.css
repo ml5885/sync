@@ -1,0 +1,88 @@
+@font-face {
+	font-family: "Satoshi Variable";
+	src: url("../static/fonts/Satoshi-Variable.ttf") format("truetype-variations");
+}
+
+@font-face {
+	font-family: "Berkeley Mono";
+	src: url("../static/fonts/berkeley-mono-typeface-trial/BerkeleyMonoTrial-Regular.otf")
+			format("opentype"),
+		url("../static/fonts/berkeley-mono-typeface-trial/BerkeleyMonoTrial-Regular.ttf")
+			format("truetype");
+}
+:root {
+	--background-color: #f1f0e7;
+	--font-color: #f1f0e7;
+}
+
+body {
+	font-family: "Berkeley Mono", monospace;
+	background-color: var(--background-color);
+	color: var(--font-color);
+	display: flex;
+	align-items: stretch;
+	justify-content: space-evenly;
+	height: 100vh;
+	padding: 30px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--highlight-color);
+	height: 100%;
+	width: 100%;
+}
+
+.wrapper h1 {
+	font-size: 140px;
+	font-weight: 500;
+	margin-bottom: 50px;
+	color: var(--font-color);
+}
+
+.info {
+	text-align: center;
+	font-weight: 500;
+	background-color: var(--background-color);
+	color: #333333;
+	border-radius: 20px;
+	padding: 50px;
+}
+
+.info h2 {
+	font-size: 50px;
+	margin: 20px;
+}
+.main h3 {
+	margin: 30px;
+}
+
+.info p {
+	font-size: 20px;
+	padding-bottom: 30px;
+}
+
+.info ul li {
+	text-align: left;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.button {
+	color: var(--font-color);
+	background-color: var(--highlight-color);
+	width: 200px;
+	cursor: pointer;
+	padding: 10px 20px;
+	margin: 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 25px;
+}
+
+a.button {
+	text-decoration: none;
+}

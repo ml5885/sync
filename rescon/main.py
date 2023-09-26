@@ -18,7 +18,7 @@ def submit():
     print(resume)
     print(job_desc)
     print(ideo)
-    return render_template("html/index.html", data=job_desc)
+    return render_template("html/result.html", data=job_desc)
 
 if __name__ == "__main__":
     app.run(debug=True)
