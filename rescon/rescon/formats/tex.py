@@ -36,8 +36,8 @@ class InvalidTagError(Exception):
 
 class TEXTemplate(Template):
     
-    def __init__(self, rf, wf) -> None:
-        self.filepath = [rf, wf]
+    def __init__(self, fp) -> None:
+        self.wfp = fp
 
     def _convert_to_xml(self, lines):
         
@@ -84,16 +84,11 @@ class TEXTemplate(Template):
         ttx.extend(lines[i:])
         return remove_tags("".join(ttx))
 
-    def build(self):
-        rf = open(f"{IN_DIR}/{self.filepath[0]}", "r")
-        lines = rf.readlines()
-        rf.close()
+    def build(self, lines):
         return self._convert_to_xml(lines)
 
-    def modify(self, xml):
-        rf = open(f"{IN_DIR}/{self.filepath[0]}", "r")
-        wf = open(f"{OUT_DIR}/{self.filepath[1]}", "r")
-        tex = self._update_tex_with_xml(rf.readlines(), xml)
+    def modify(self, lines, xml):
+        wf = open(f"{OUT_DIR}/{self.wfp}.tex", "r")
+        tex = self._update_tex_with_xml(lines, xml)
         wf.write(tex)
-        rf.close()
-        wf.close()
+        wf.close()       

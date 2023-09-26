@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from rescon.rescon.pipeline import customize_resume
 
 app = Flask(__name__)
 
@@ -14,8 +15,9 @@ def form():
 def submit():
     job_desc = request.form["jobDescription"]
     ideo = request.form["ideology"]
-    resume = request.files["file"].read().decode('utf-8')
-    print(resume)
+    resume = request.files["file"].readlines()
+    
+    customize_resume(job_desc=job_desc, ideo=ideo, )
     return render_template("html/result.html", data=resume)
 
 if __name__ == "__main__":
