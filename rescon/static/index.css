@@ -50,6 +50,9 @@ body {
 	color: #333333;
 	border-radius: 20px;
 	padding: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .info h2 {
@@ -74,15 +77,26 @@ body {
 .button {
 	color: var(--font-color);
 	background-color: var(--highlight-color);
-	width: 200px;
+	display: flex;
+	justify-content: center;
+	width: 150px;
 	cursor: pointer;
-	padding: 10px 20px;
+	padding: 10px;
 	margin: 20px;
 	border: none;
 	border-radius: 5px;
 	font-size: 25px;
+	transition: all 0.25s ease-in-out;
+}
+
+.button:hover {
+	transform: scale(1.1);
 }
 
 a.button {
 	text-decoration: none;
+}
+
+a.button:hover {
+	color: var(--font-color);
 }

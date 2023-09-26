@@ -19,6 +19,11 @@ label {
 	font-weight: 400;
 }
 
+.form-content .button {
+	color: var(--highlight-color);
+	background-color: var(--font-color);
+}
+
 .form-group {
 	display: flex;
 	flex-direction: column;
