@@ -69,7 +69,7 @@ class TEXTemplate(Template):
         ttx = []
         i = j = 0
         for n in root.iter():
-            if n.text.isspace(): continue
+            if not n or not n.text or n.text.isspace(): continue
             while i < len(lines):
                 line = lines[i].strip()
                 if line == "{% DATA %}":
@@ -88,7 +88,7 @@ class TEXTemplate(Template):
         return self._convert_to_xml(lines)
 
     def modify(self, lines, xml):
-        wf = open(f"{TEX_DIR}/{self.wfp}.tex", "r")
+        wf = open(f"{TEX_DIR}/{self.wfp}.tex", "w")
         tex = self._update_tex_with_xml(lines, xml)
         wf.write(tex)
         wf.close()       
