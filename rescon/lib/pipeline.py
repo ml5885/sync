@@ -11,5 +11,5 @@ def customize_resume(job_desc, ideo, lines, dtf=None):
     in_xml = template.build(lines)
     out_xml = customize(job_desc, ideo, ET.tostring(in_xml, encoding="utf-8"))
     template.modify(lines, out_xml)
-    subprocess.Popen([f"{TEX_DIR}/generate_pdf.sh", f"{TEX_DIR}/{dtf}.tex"])
-    return True
+    subprocess.Popen([f"{TEX_DIR}/generate_pdf.sh", f"{TEX_DIR}/{dtf}.tex", f"{TEX_DIR}/"]).wait()
+    return dtf

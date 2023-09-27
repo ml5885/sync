@@ -30,12 +30,26 @@
 \begin{rSection}{SKILLS}
 
 \begin{tabular}{ @{} >{\bfseries}l @{\hspace{2ex}} l }
+{% begin tag languages %}
 {% DATA %}
 Languages & Python, Java, JavaScript, SQL, HTML, CSS, C++, C, Swift, GraphQL, Rust\\
+{% DATA %}
+{% end tag languages %}
+{% begin tag data %}
+{% DATA %}
 Data Technology & PostgreSQL, SQLite, MySQL, Firebase, Faker (Data Generation), Selenium\\
+{% DATA %}
+{% end tag data %}
+{% begin tag frameworks %}
+{% DATA %}
 Frameworks & Flask, Django, FastAPI, SQLAlchemy, Okta, React, Vue, TensorFlow, PyTorch, SKLearn, OpenCV\\
+{% DATA %}
+{% end tag frameworks %}
+{% begin tag devtools %}
+{% DATA %}
 Development Tools & Git, Figma, VSCode, Eclipse, Android Studio, XCode, Unity, SparkAR, Postman, Insomnia
 {% DATA %}
+{% end tag devtools %}
 \end{tabular}
 \end{rSection}
 {% end tag skills %}

@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from rescon.lib.pipeline import customize_resume
+from rescon.lib.formats import TEX_DIR
 
 app = Flask(__name__)
 
@@ -18,8 +19,9 @@ def submit():
     ideo = request.form["ideology"]
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
-    customize_resume(job_desc, ideo, resume)
-    return render_template("html/result.html", data=resume)
+    dtf = customize_resume(job_desc, ideo, resume)
+    return send_file(f"{TEX_DIR}/{dtf}.pdf", as_attachment=True, download_name=f"{dtf}.pdf")
+    # return render_template("html/result.html", data=resume)
 
 if __name__ == "__main__":
     app.run(debug=True)

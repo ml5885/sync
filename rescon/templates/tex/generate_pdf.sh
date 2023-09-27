@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/tanush/bin/pdflatex -interaction=nonstopmode $1
+/home/tanush/bin/pdflatex -output-directory=$2 -interaction=nonstopmode $1

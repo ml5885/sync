@@ -20,8 +20,8 @@ label {
 }
 
 .form-content .button {
-	color: var(--highlight-color);
 	background-color: var(--font-color);
+	color: var(--highlight-color);
 }
 
 .form-group {
@@ -48,3 +48,4 @@ label {
 	background-color: transparent;
 	color: var(--font-color);
 }
+

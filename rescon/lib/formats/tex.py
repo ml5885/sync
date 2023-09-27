@@ -5,6 +5,10 @@ import xml.dom.minidom as MD
 from datetime import datetime
 from ..formats import Template, TEX_DIR
 
+REPLACEMENTS = {
+    "\\\\": "\\",
+    "&amp;": "&"
+}
 
 def find_parent(root, child):
     for parent in root.iter():
@@ -69,14 +73,15 @@ class TEXTemplate(Template):
         ttx = []
         i = j = 0
         for n in root.iter():
-            if not n or not n.text or n.text.isspace(): continue
+            if not n.text: continue
+            if n.text.isspace(): continue
             while i < len(lines):
                 line = lines[i].strip()
                 if line == "{% DATA %}":
                     k = i + 1
                     while lines[k].strip() != "{% DATA %}": k += 1
                     ttx.extend(lines[j:i])
-                    ttx.append(n.text)
+                    ttx.append(n.text.replace("\\\\", "\\").replace("\\\n", "\\\\\n").replace("&amp;", "&"))
                     j = k + 1
                     i = k + 1
                     break
@@ -91,4 +96,4 @@ class TEXTemplate(Template):
         wf = open(f"{TEX_DIR}/{self.wfp}.tex", "w")
         tex = self._update_tex_with_xml(lines, xml)
         wf.write(tex)
-        wf.close()       
+        wf.close()
