@@ -86,7 +86,8 @@ body {
 	border: none;
 	border-radius: 5px;
 	font-size: 25px;
-	transition: all 0.25s ease-in-out;
+	transition: transform 0.25s ease-in-out;
+	-webkit-transition: transform 0.25s ease-in-out;
 }
 
 .button:hover {
