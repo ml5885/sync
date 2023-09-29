@@ -15,13 +15,17 @@ def form():
 @app.route("/submit", methods=["POST"])
 def submit():
     job_desc = request.form["jobDescription"]
-    print(job_desc)
     ideo = request.form["ideology"]
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
-    dtf = customize_resume(job_desc, ideo, resume)
-    return send_file(f"{TEX_DIR}/{dtf}.pdf", as_attachment=True, download_name=f"{dtf}.pdf")
-    # return render_template("html/result.html", data=resume)
+    # dtf = customize_resume(job_desc, ideo, resume)
+    dtf = 1695863133.296293
+    return render_template("html/result.html", data=dtf)
+
+
+@app.route("/send-file", methods=["GET"])
+def sendFile():
+    return send_file(f"{TEX_DIR}/{dtf}.pdf", as_attachment=True, mimetype='application/pdf', download_name=f"{dtf}.pdf")
 
 if __name__ == "__main__":
     app.run(debug=True)

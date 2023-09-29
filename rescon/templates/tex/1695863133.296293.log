@@ -2,10 +2,10 @@ This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**/home/tanush/Programming/Projects/rescon/rescon/templates/tex/1695863133.2962
+**/home/tanush/Programming/Projects/rescon/rescon/static/tex/1695863133.2962
 93.tex
 
-(/home/tanush/Programming/Projects/rescon/rescon/templates/tex/1695863133.29629
+(/home/tanush/Programming/Projects/rescon/rescon/static/tex/1695863133.29629
 3.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
@@ -420,7 +420,7 @@ and I'll forget about whatever was undefined.
 [1
 
 {/home/tanush/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map}]
-(/home/tanush/Programming/Projects/rescon/rescon/templates/tex/1695863133.29629
+(/home/tanush/Programming/Projects/rescon/rescon/static/tex/1695863133.29629
 3.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
@@ -452,7 +452,7 @@ Here is how much of TeX's memory you used:
 0.pfb></home/tanush/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></home/tanush/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmti1
 0.pfb>
-Output written on /home/tanush/Programming/Projects/rescon/rescon/templates/tex
+Output written on /home/tanush/Programming/Projects/rescon/rescon/static/tex
 /1695863133.296293.pdf (1 page, 109357 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)

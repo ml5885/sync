@@ -16,7 +16,6 @@ function getRandomColor() {
 
 $(function () {
 	var color = getRandomColor();
-	console.log(color);
 
 	document.documentElement.style.setProperty("--highlight-color", color);
 	document.documentElement.style.setProperty("--font-color", "#f1f0e7");
