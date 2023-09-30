@@ -1,14 +1,20 @@
 body {
-	height: fit-content;
+	height: 100vh;
 }
 
 .result {
 	padding: 30px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 .result .button {
 	background-color: var(--font-color);
 	color: var(--highlight-color);
+	width: 250px;
+	font-size: 20px;
+	padding: 20px;
 }
 
 .result .button:hover {
