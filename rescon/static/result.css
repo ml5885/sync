@@ -5,3 +5,12 @@ body {
 .result {
 	padding: 30px;
 }
+
+.result .button {
+	background-color: var(--font-color);
+	color: var(--highlight-color);
+}
+
+.result .button:hover {
+	color: var(--highlight-color);
+}
