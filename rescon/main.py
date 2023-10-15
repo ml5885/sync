@@ -19,8 +19,8 @@ def submit():
     ideo = request.form["ideology"]
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
-    # dtf = customize_resume(job_desc, ideo, resume)
-    dtf = 1695863133.296293
+    dtf = customize_resume(job_desc, ideo, resume)
+    # dtf = 1695863133.296293
     return render_template("html/result.html", data=dtf)
 
 
