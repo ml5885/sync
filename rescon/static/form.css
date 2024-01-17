@@ -1,5 +1,30 @@
+body {
+	height: inherit;
+	overflow-y: scroll;
+}
+
 .form-control-file {
 	cursor: pointer;
+}
+
+.wrapper h1 {
+	margin-bottom: 0px;
+}
+
+.nav-wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: 100px;
+	font-size: 25px;
+	margin: 25px 0px 40px 0px;
+}
+
+.nav-link {
+	cursor: pointer;
+}
+
+.nav-link.active {
+	text-decoration: underline !important;
 }
 
 form {
@@ -33,7 +58,8 @@ label {
 	padding-bottom: 20px;
 }
 
-.form-group textarea {
+.form-group textarea,
+.form-group input[type="text"] {
 	border-radius: 5px;
 	border: 1.5px solid var(--font-color);
 	background-color: transparent;
@@ -41,11 +67,11 @@ label {
 	color: var(--font-color);
 }
 
-.form-group textarea.form-control:focus {
+.form-group textarea.form-control:focus,
+.form-group input[type="text"].form-control:focus {
 	outline: none !important;
 	box-shadow: none;
 	border: 1.5px solid var(--font-color);
 	background-color: transparent;
 	color: var(--font-color);
 }
-

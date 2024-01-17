@@ -14,18 +14,68 @@
 		<link rel="stylesheet" href="../../static/form.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="../../static/background-color.js"></script>
+		<style>
+			.nav-link.active {
+				text-decoration: underline; 
+			}
+		</style>
 	</head>
 	<body>
 		<div class="wrapper">
 			<h1>ResCon</h1>
+			<div class="nav-wrapper">
+				<a class="nav-link" onclick="toggleForm('fromLink')">From Link</a>
+				<a class="nav-link" onclick="toggleForm('manually')">Manually</a>
+			</div>
 			<form
 				action="/submit"
 				method="post"
 				enctype="multipart/form-data"
 				class="form-content"
+				id="fromLinkForm"
 			>
 				<div class="form-group">
-					<label for="file">Upload a file (must be a .ttx file)</label>
+					<label for="file">Upload your resume (must be a .ttx file)</label>
+					<input
+						type="file"
+						class="form-control-file"
+						id="file"
+						name="file"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<label for="jobLink">Job Link</label>
+					<input
+						class="form-control"
+						type="text"
+						id="jobLink"
+						name="jobLink"
+						required
+					></input>
+				</div>
+				<div class="form-group">
+					<label for="apiKey">OpenAI API Key</label>
+					<input
+						class="form-control"
+						type="text"
+						id="apiKey"
+						name="apiKey"
+						required
+					></input>
+				</div>
+				<button type="submit" class="button">Submit</button>
+			</form>
+			<form
+				action="/submit"
+				method="post"
+				enctype="multipart/form-data"
+				class="form-content"
+				id="manuallyForm"
+				style="display: none"
+			>
+				<div class="form-group">
+					<label for="file">Upload your resume (must be a .ttx file)</label>
 					<input
 						type="file"
 						class="form-control-file"
@@ -45,15 +95,25 @@
 					></textarea>
 				</div>
 				<div class="form-group">
-					<label for="ideology">Ideology:</label>
+					<label for="ideology">Company Mission</label>
 					<textarea
 						class="form-control"
-						type="texet"
+						type="text"
 						id="ideology"
 						name="ideology"
 						rows="5"
 						required
 					></textarea>
+				</div>
+				<div class="form-group">
+					<label for="apiKey">OpenAI API Key</label>
+					<input
+						class="form-control"
+						type="text"
+						id="apiKey"
+						name="apiKey"
+						required
+					></input>
 				</div>
 				<button type="submit" class="button">Submit</button>
 			</form>
@@ -73,5 +133,39 @@
 			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 			crossorigin="anonymous"
 		></script>
+		<script>
+			$(document).ready(function() {
+				$('.nav-link:first').addClass('active');
+
+				$('.nav-link').click(function() {
+					$('.nav-link').removeClass('active');
+
+					$(this).addClass('active');
+
+					if ($(this).text() === 'From Link') {
+						$('#fromLinkForm').show();
+						$('#manuallyForm').hide();
+					} else if ($(this).text() === 'Manually') {
+						$('#fromLinkForm').hide();
+						$('#manuallyForm').show();
+					}
+				});
+			});
+			function toggleForm(selected) {
+				$('.nav-link').removeClass('active');
+
+				$(this).addClass('active');
+
+				if (selected === "fromLink") {
+					$("#fromLinkForm").show();
+					$("#manuallyForm").hide();
+				} else if (selected === "manually") {
+					$("#fromLinkForm").hide();
+					$("#manuallyForm").show();
+				}
+
+				console.log("toggled ", selected)
+			}
+		</script>
 	</body>
 </html>
