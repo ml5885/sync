@@ -1,20 +1,18 @@
+from .base import Source
+from bs4 import BeautifulSoup
 import requests
-from abc import ABC, abstractmethod
 
-class InvalidURLException(Exception):
-    pass
+class Lever(Source):
 
-class Source(ABC):
-
-    def __init__(self, url, _base=""):
-        if not self._valid_url(url, _base):
-            raise InvalidURLException("Invalid URL")
-        self.url = url
-
-    def _valid_url(self, url, _base):
-        if _base not in url: return False
-        return requests.get(url).ok
-
-    @abstractmethod
-    def get_questions(self):
-        pass
+    def __init__(self, url, _base="jobs.lever.co"):
+        super().__init__(url, _base)
+    
+    def get_questions(self, _parser="html.parser"):
+        lever_html = requests.get(self.url).content
+        bs = BeautifulSoup(lever_html, _parser)
+        qs = bs.find_all("li", {"class": "custom-question"})
+        pqs = []
+        for q in qs:
+            textqs = q.find("div", {"class": "application-label"}).find("div", {"class": "text"}).text
+            pqs.append(textqs)
+        return textqs

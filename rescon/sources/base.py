@@ -16,5 +16,5 @@ class Source(ABC):
         return requests.get(url).ok
 
     @abstractmethod
-    def get_questions(self):
+    def get_questions(self, _parser="html.parser"):
         pass
