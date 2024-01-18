@@ -2,6 +2,8 @@ import os
 from flask import Flask, render_template, request, send_file, jsonify
 from rescon.lib.pipeline import customize_resume
 from rescon.lib.formats import TEX_DIR
+from rescon.config import server_config
+from rescon.sources import switch_scrape
 
 app = Flask(__name__)
 
@@ -15,8 +17,10 @@ def form():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    job_desc = request.form["jobDescription"]
-    ideo = request.form["ideology"]
+    server_config.openai_api_key = request.form["openai_api_key"]
+    link, call = request.form["link"], switch_scrape(request.form["link"])
+    if not call:
+        return render_template("html/manual.html")
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
     dtf = customize_resume(job_desc, ideo, resume)
