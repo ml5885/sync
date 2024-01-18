@@ -14,6 +14,5 @@ class Greenhouse(Source):
         textqs = []
         for q in qs:
             hq = q.find("label")
-            tq = hq.text if hq.find("textarea") else None
-            if tq: textqs.append(tq)
+            if hq.find("textarea"): textqs.append(hq.text)
         return textqs
