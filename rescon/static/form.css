@@ -11,22 +11,6 @@ body {
 	margin-bottom: 0px;
 }
 
-.nav-wrapper {
-	display: flex;
-	flex-direction: row;
-	gap: 100px;
-	font-size: 25px;
-	margin: 25px 0px 40px 0px;
-}
-
-.nav-link {
-	cursor: pointer;
-}
-
-.nav-link.active {
-	text-decoration: underline !important;
-}
-
 form {
 	font-size: 20px;
 	display: flex;
