@@ -23,9 +23,10 @@
 				method="post"
 				enctype="multipart/form-data"
 				class="form-content"
+				id="fromLinkForm"
 			>
 				<div class="form-group">
-					<label for="file">Upload a file (must be a .ttx file)</label>
+					<label for="file">Upload your resume (must be a .ttx file)</label>
 					<input
 						type="file"
 						class="form-control-file"
@@ -35,25 +36,24 @@
 					/>
 				</div>
 				<div class="form-group">
-					<label for="jobDescription">Job Description</label>
-					<textarea
+					<label for="jobLink">Job Link</label>
+					<input
 						class="form-control"
-						id="jobDescription"
-						name="jobDescription"
-						rows="5"
+						type="text"
+						id="jobLink"
+						name="jobLink"
 						required
-					></textarea>
+					></input>
 				</div>
 				<div class="form-group">
-					<label for="ideology">Ideology:</label>
-					<textarea
+					<label for="apiKey">OpenAI API Key</label>
+					<input
 						class="form-control"
-						type="texet"
-						id="ideology"
-						name="ideology"
-						rows="5"
+						type="text"
+						id="apiKey"
+						name="apiKey"
 						required
-					></textarea>
+					></input>
 				</div>
 				<button type="submit" class="button">Submit</button>
 			</form>
