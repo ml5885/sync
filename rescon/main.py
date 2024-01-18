@@ -26,6 +26,7 @@ def submit():
     dtf = customize_resume(job_desc, ideo, resume)
     return render_template("html/result.html", data=dtf)
 
+@app.route("/manual", methods=["POST"])
 
 @app.route("/send/<dtf>", methods=["GET"])
 def send(dtf):
