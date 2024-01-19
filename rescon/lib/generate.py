@@ -5,11 +5,7 @@ from langchain.schema import (
 )
 import xml.etree.ElementTree as ET
 from .model import GPT
-from .prompt import (
-    SYSTEM_TEMPLATE,
-    AGENT_RESPONSE,
-    DATA_TEMPLATE
-)
+from .prompt import *
 
 TOKENS = ["<", ">"]
 
@@ -24,8 +20,8 @@ def _parse_xml(str_xml):
     return et_xml
 
 def customize(job_desc, xml, ag=GPT):
-    data = DATA_TEMPLATE.format(job_description=job_desc, xml_resume=xml)
-    log = [SystemMessage(content=SYSTEM_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
+    data = DATA_RESUME_TEMPLATE.format(job=job_desc, xml_resume=xml)
+    log = [SystemMessage(content=SYSTEM_RESUME_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
     is_valid = False
     result = None
     while not is_valid:
@@ -34,5 +30,9 @@ def customize(job_desc, xml, ag=GPT):
         if result: is_valid = True
     return result
 
-def answer(questions, resume, ag=GPT):
+def answer_questions(questions, resume, ag=GPT):
+    pass
+
+def create_cover_letter(job, resume, ag=GPT):
+
     pass
