@@ -23,8 +23,8 @@ def _parse_xml(str_xml):
         print(e)
     return et_xml
 
-def customize(job_desc, ideo, xml, ag = GPT):
-    data = DATA_TEMPLATE.format(job_description=job_desc, company_ideology=ideo, xml_resume=xml)
+def customize(job_desc, xml, ag=GPT):
+    data = DATA_TEMPLATE.format(job_description=job_desc, xml_resume=xml)
     log = [SystemMessage(content=SYSTEM_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
     is_valid = False
     result = None
@@ -33,3 +33,6 @@ def customize(job_desc, ideo, xml, ag = GPT):
         result = _parse_xml(str_response.content)
         if result: is_valid = True
     return result
+
+def answer(questions, resume, ag=GPT):
+    pass

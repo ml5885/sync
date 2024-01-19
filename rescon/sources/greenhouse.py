@@ -16,3 +16,9 @@ class Greenhouse(Source):
             hq = q.find("label")
             if hq.find("textarea"): textqs.append(hq.text)
         return textqs
+    
+    def get_description(self, _parser="html.parser"):
+        gh_html = requests.get(self.url).content
+        bs = BeautifulSoup(gh_html, _parser)
+        content = bs.find("div", {"id": "content"}).get_text()
+        return content

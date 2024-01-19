@@ -5,11 +5,18 @@ from .formats.tex import TEXTemplate
 from .formats import TEX_DIR
 from .generate import customize
 
-def customize_resume(job_desc, ideo, lines, dtf=None):
+
+def customize_resume(job_desc, lines, dtf=None):
     dtf = dtf if dtf else datetime.now().timestamp()
     template = TEXTemplate(dtf)
     in_xml = template.build(lines)
-    out_xml = customize(job_desc, ideo, ET.tostring(in_xml, encoding="utf-8"))
+    out_xml = customize(job_desc, ET.tostring(in_xml, encoding="utf-8"))
     template.modify(lines, out_xml)
     subprocess.Popen([f"{TEX_DIR}/generate_pdf.sh", f"{TEX_DIR}/{dtf}.tex", f"{TEX_DIR}/"]).wait()
     return dtf
+
+def create_cover_letter(job_desc, resume):
+    pass
+
+def answer_questions(questions, resume):
+    pass

@@ -18,3 +18,7 @@ class Source(ABC):
     @abstractmethod
     def get_questions(self, _parser="html.parser"):
         pass
+
+    @abstractmethod
+    def get_description(self, _parser="html.parser"):
+        pass

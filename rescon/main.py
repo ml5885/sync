@@ -11,22 +11,30 @@ app = Flask(__name__)
 def index():
     return render_template("html/index.html")
 
-@app.route("/form", methods=["GET"])
+@app.route("/link", methods=["GET"])
 def form():
-    return render_template("html/form.html")
+    return render_template("html/link.html")
+
+@app.route("/form", methods=["POST"])
+def submit():
+    link, call = request.form["link"], switch_scrape(request.form["link"])
+    if not call:
+        return render_template("html/manual.html", text="Unsupported URL.")
+    description = call(link).get_description()
+    questions = call(link).get_questions()
+    if not (questions or description):
+        return render_template("html/manual.html", text="Questions or Description not found.")
+    return render_template("html/select.html", questions=questions)
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    server_config.openai_api_key = request.form["openai_api_key"]
-    link, call = request.form["link"], switch_scrape(request.form["link"])
-    if not call:
-        return render_template("html/manual.html")
+    server_config.openai_api_key = request.form["apiKey"]
+    description = request.form["description"]
+    questions = request.form["questions"].split("\n")
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
-    dtf = customize_resume(job_desc, ideo, resume)
+    dtf = customize_resume(description, resume)
     return render_template("html/result.html", data=dtf)
-
-@app.route("/manual", methods=["POST"])
 
 @app.route("/send/<dtf>", methods=["GET"])
 def send(dtf):
