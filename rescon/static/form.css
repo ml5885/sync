@@ -92,3 +92,9 @@ label {
 	border: 1px solid var(--font-color);
 	color: var(--font-color);
 }
+
+@media (max-width: 800px) {
+	.form-group {
+		width: 400px;
+	}
+}
