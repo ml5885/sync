@@ -90,4 +90,5 @@ label {
 	outline: none;
 	background: none;
 	border: 1px solid var(--font-color);
+	color: var(--font-color);
 }
