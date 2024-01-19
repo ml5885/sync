@@ -62,27 +62,20 @@ label {
 }
 
 .add-question {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: 1.5px dashed var(--font-color);
-	background-color: transparent;
 	color: var(--font-color);
 	border-radius: 5px;
 	cursor: pointer;
 	width: 100%;
 	padding: 15px 0px;
 	margin-bottom: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 20px;
 }
 
 .add-question label {
-	cursor: pointer;
-	margin-bottom: 0rem !important;
-}
-
-.add-question .question-label {
-	display: flex;
-	gap: 10px;
+	margin-bottom: 0 !important;
 }
 
 .delete-button {
