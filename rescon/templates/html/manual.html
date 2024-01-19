@@ -43,27 +43,64 @@
 						id="apiKey"
 						name="apiKey"
 						required
-					></input>
+					/>
 				</div>
-                <div class="form-group">
-					<label for="apiKey">Job Description</label>
+				<div class="form-group">
+					<label for="jobDescription">Job Description</label>
 					<textarea
 						class="form-control"
-						type="text"
-						id="apiKey"
-						name="apiKey"
+						id="jobDescription"
+						name="jobDescription"
 						required
 					></textarea>
 				</div>
-                <div class="add-question">
-                    <div class="question-label">
-                        <img src="../../static/Plus.svg"/>
-                        <label for="addQuestion">Add question</label>
-                    </div>
-                </div>
+				<div class="add-question">
+					<div class="question-label">
+						<img src="../../static/Plus.svg" />
+						<label for="addQuestion">Add question</label>
+					</div>
+				</div>
 				<button type="submit" class="button">Submit</button>
 			</form>
 		</div>
+
+		<script>
+			$(document).ready(function () {
+				var questionCount = 1;
+
+				$(".add-question").on("click", function () {
+					var questionWrapper = $("<div>").addClass(
+						"form-group question-wrapper"
+					);
+					var questionLabel = $("<label>")
+						.attr("for", "question" + questionCount)
+						.text("Question " + questionCount);
+					var questionInput = $("<input>").attr({
+						type: "text",
+						class: "form-control",
+						id: "question" + questionCount,
+						name: "question" + questionCount,
+						required: true,
+					});
+					var deleteButton = $("<button>")
+						.attr({
+							type: "button",
+							class: "delete-button",
+						})
+						.html("&times;");
+
+					deleteButton.on("click", function () {
+						questionWrapper.remove();
+					});
+
+					questionWrapper.append(questionLabel, questionInput, deleteButton);
+					$(".add-question").before(questionWrapper);
+
+					questionCount++;
+				});
+			});
+		</script>
+
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
