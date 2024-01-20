@@ -35,7 +35,8 @@ def submit():
     resume = [l.decode("utf-8") for l in resume]
     dtf, resume = customize_resume(description, resume)
     qas = answer_questions(questions, resume)
-    return render_template("html/result.html", data=dtf, qa=qas)
+    cl = create_cover_letter(description, resume)
+    return render_template("html/result.html", data=dtf, qa=qas, cl=cl)
 
 @app.route("/send/<dtf>", methods=["GET"])
 def send(dtf):
