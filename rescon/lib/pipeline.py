@@ -11,9 +11,9 @@ def customize_resume(job_desc, lines, dtf=None):
     template = TEXTemplate(dtf)
     in_xml = template.build(lines)
     out_xml = customize(job_desc, ET.tostring(in_xml, encoding="utf-8"))
-    template.modify(lines, out_xml)
+    resume = template.modify(lines, out_xml)
     subprocess.Popen([f"{TEX_DIR}/generate_pdf.sh", f"{TEX_DIR}/{dtf}.tex", f"{TEX_DIR}/"]).wait()
-    return dtf
+    return dtf, resume
 
 def create_cover_letter(job_desc, resume):
     return create_cl(job_desc, resume)

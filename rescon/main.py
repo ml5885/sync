@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, send_file, jsonify
-from rescon.lib.pipeline import customize_resume
+from rescon.lib.pipeline import customize_resume, answer_questions, create_cover_letter
 from rescon.lib.formats import TEX_DIR
 from rescon.config import server_config
 from rescon.sources import switch_scrape
@@ -33,8 +33,9 @@ def submit():
     questions = request.form["questions"].split("\n")
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
-    dtf = customize_resume(description, resume)
-    return render_template("html/result.html", data=dtf)
+    dtf, resume = customize_resume(description, resume)
+    qas = answer_questions(questions, resume)
+    return render_template("html/result.html", data=dtf, qa=qas)
 
 @app.route("/send/<dtf>", methods=["GET"])
 def send(dtf):

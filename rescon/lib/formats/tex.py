@@ -97,3 +97,4 @@ class TEXTemplate(Template):
         tex = self._update_tex_with_xml(lines, xml)
         wf.write(tex)
         wf.close()
+        return tex
