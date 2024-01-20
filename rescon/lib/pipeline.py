@@ -16,9 +16,9 @@ def customize_resume(job_desc, lines, dtf=None):
     return dtf
 
 def create_cover_letter(job_desc, resume):
-    pass
+    return create_cl(job_desc, resume)
 
 def answer_questions(questions, resume):
     questions = "Questions:\n" + "\n".join(questions)
-    answer(questions, )
-
+    qas = answer(questions, resume)
+    return qas
