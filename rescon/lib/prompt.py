@@ -20,6 +20,11 @@ SYSTEM_CL_TEMPLATE = dedent('''\
 SYSTEM_QUESTION_TEMPLATE = dedent('''\
     I will give you a set of questions and a resume. \
     I want you to answer the questions to the best of your ability given the resume. \
+    The returned responses should be in a strict tab-separated format such that it conforms to the following general format:
+        QUESTION\tANSWER
+        QUESTION_1\tANSWER_1
+        ...
+        QUESTION_N\tANSWER_N
     Do not lie about any content. \
     If you understand this, say "Done".''')
 

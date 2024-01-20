@@ -4,8 +4,8 @@ from langchain.schema import (
     HumanMessage
 )
 import xml.etree.ElementTree as ET
-from .model import GPT
-from .prompt import *
+from rescon.lib.model import GPT
+from rescon.lib.prompt import *
 
 TOKENS = ["<", ">"]
 
@@ -30,9 +30,12 @@ def customize(job_desc, xml, ag=GPT):
         if result: is_valid = True
     return result
 
-def answer_questions(questions, resume, ag=GPT):
-    pass
+def answer(questions, resume, ag=GPT):
+    data = DATA_QUESTION_TEMPLATE.format(questions=questions, resume=resume)
+    log = [SystemMessage(content=SYSTEM_QUESTION_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
+    str_response = ag.predict_messages(log)
+    return str_response.content
 
-def create_cover_letter(job, resume, ag=GPT):
+def create_cl(job, resume, ag=GPT):
 
     pass
