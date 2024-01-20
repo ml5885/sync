@@ -3,7 +3,7 @@ from datetime import datetime
 import xml.etree.ElementTree as ET
 from .formats.tex import TEXTemplate
 from .formats import TEX_DIR
-from .generate import customize
+from .generate import customize, answer, create_cl
 
 
 def customize_resume(job_desc, lines, dtf=None):
@@ -19,4 +19,6 @@ def create_cover_letter(job_desc, resume):
     pass
 
 def answer_questions(questions, resume):
-    pass
+    questions = "Questions:\n" + "\n".join(questions)
+    answer(questions, )
+
