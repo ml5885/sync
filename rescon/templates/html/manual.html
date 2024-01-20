@@ -54,10 +54,10 @@
 						required
 					></textarea>
 				</div>
-				<div class="add-question">
-					<div class="question-label">
-						<img src="../../static/Plus.svg" />
-						<label for="addQuestion">Add question</label>
+				<div class="add-question-wrapper">
+					<div class="add-question">
+						<label for="addQuestion">Questions</label>
+						<img class="add-question-button" src="../../static/Plus.svg" />
 					</div>
 				</div>
 				<button type="submit" class="button">Submit</button>
@@ -66,15 +66,13 @@
 
 		<script>
 			$(document).ready(function () {
-				var questionCount = 1;
+				$(".add-question-button").on("click", function () {
+					var questionCount = 1;
 
-				$(".add-question").on("click", function () {
 					var questionWrapper = $("<div>").addClass(
 						"form-group question-wrapper"
 					);
-					var questionLabel = $("<label>")
-						.attr("for", "question" + questionCount)
-						.text("Question " + questionCount);
+
 					var questionInput = $("<input>").attr({
 						type: "text",
 						class: "form-control",
@@ -93,9 +91,8 @@
 						questionWrapper.remove();
 					});
 
-					questionWrapper.append(questionLabel, questionInput, deleteButton);
-					$(".add-question").before(questionWrapper);
-
+					questionWrapper.append(questionInput, deleteButton);
+					$(".add-question").after(questionWrapper);
 					questionCount++;
 				});
 			});
