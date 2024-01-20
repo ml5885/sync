@@ -37,5 +37,7 @@ def answer(questions, resume, ag=GPT):
     return str_response.content
 
 def create_cl(job, resume, ag=GPT):
-
-    pass
+    data = DATA_CL_TEMPLATE.format(job=job, resume=resume)
+    log = [SystemMessage(content=SYSTEM_CL_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
+    str_response = ag.predict_messages(log)
+    return str_response.content
