@@ -65,22 +65,19 @@
 			</form>
 		</div>
 		<script>
-			const q = "{{ questions }}";
 			$(document).ready(function () {
-				$(".add-question-button").on("click", function () {
-					var questionCount = 1;
+				var q = "{{ questions }}";
+				var questionCount = 0;
 
+				function addQuestion(questionText) {
 					var questionWrapper = $("<div>").addClass(
 						"form-group question-wrapper"
 					);
 
-					var questionInput = $("<input>").attr({
-						type: "text",
-						class: "form-control",
-						id: "question" + questionCount,
-						name: "question" + questionCount,
-						required: true,
-					});
+					var questionDisplay = $("<div>")
+						.text(questionText)
+						.addClass("question-display");
+
 					var deleteButton = $("<button>")
 						.attr({
 							type: "button",
@@ -92,12 +89,21 @@
 						questionWrapper.remove();
 					});
 
-					questionWrapper.append(questionInput, deleteButton);
+					questionWrapper.append(questionDisplay, deleteButton);
 					$(".add-question").after(questionWrapper);
 					questionCount++;
+				}
+
+				for (var i = 0; i < q.length; i++) {
+					addQuestion(q[i]);
+				}
+
+				$(".add-question-button").on("click", function () {
+					addQuestion("New Question");
 				});
 			});
 		</script>
+
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
