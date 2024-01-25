@@ -13,7 +13,7 @@ class Lever(Source):
         qs = bs.find_all("li", {"class": "custom-question"})
         pqs = []
         for q in qs:
-            textqs = q.find("div", {"class": "application-label"}).find("div", {"class": "text"}).text
+            textqs = q.find("div", {"class": "application-label"}).find("div", {"class": "text"}).text.strip()
             pqs.append(textqs)
         return textqs
     

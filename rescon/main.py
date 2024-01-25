@@ -12,11 +12,11 @@ def index():
     return render_template("html/index.html")
 
 @app.route("/link", methods=["GET"])
-def form():
+def link():
     return render_template("html/link.html")
 
 @app.route("/form", methods=["POST"])
-def submit():
+def form():
     link, call = request.form["link"], switch_scrape(request.form["link"])
     if not call:
         return render_template("html/manual.html", text="Unsupported URL.")

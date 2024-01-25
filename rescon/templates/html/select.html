@@ -65,9 +65,9 @@
 			</form>
 		</div>
 		<script>
+			const q = "{{ questions }}";
 			$(document).ready(function () {
 				$(".add-question-button").on("click", function () {
-					var q = {{ questions }};
 					var questionCount = 1;
 
 					var questionWrapper = $("<div>").addClass(
@@ -78,7 +78,6 @@
 						type: "text",
 						class: "form-control",
 						id: "question" + questionCount,
-						for: "question" + questionCount,
 						name: "question" + questionCount,
 						required: true,
 					});

@@ -11,10 +11,11 @@ class Greenhouse(Source):
         gh_html = requests.get(self.url).content
         bs = BeautifulSoup(gh_html, _parser)
         qs = bs.find("div", {"id": "custom_fields"}).find_all("div", {"class": "field"})
+        print(qs)
         textqs = []
         for q in qs:
             hq = q.find("label")
-            if hq.find("textarea"): textqs.append(hq.text)
+            if hq.find("textarea"): textqs.append(hq.text.strip())
         return textqs
     
     def get_description(self, _parser="html.parser"):
