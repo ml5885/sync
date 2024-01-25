@@ -103,9 +103,8 @@ label {
 	cursor: pointer;
 }
 
-.question-display {
-	border: none;
-	resize: none;
+textarea.question-display {
+	min-height: 100px !important;
 }
 
 @media (max-width: 800px) {
