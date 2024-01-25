@@ -26,7 +26,7 @@ def form():
     questions = [q[0:-1] for q in questions]
     if not (questions or description):
         return render_template("html/manual.html", text="Questions or Description not found.")
-    return render_template("html/select.html", questions=DELIMIT.join(questions), _delimit=DELIMIT)
+    return render_template("html/select.html", questions=DELIMIT.join(questions), description=description, _delimit=DELIMIT)
 
 @app.route("/submit", methods=["POST"])
 def submit():
