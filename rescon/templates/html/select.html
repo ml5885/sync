@@ -46,12 +46,59 @@
 					/>
 				</div>
 				<div class="form-group">
-					<label for="jobDescription">Job Description</label>
+					<label for="description">Job Description</label>
+					<textarea
+						class="form-control"
+						id="description"
+						name="description"
+						required
+					></textarea>
+				</div>
+				<div class="add-question-wrapper">
+					<div class="add-question">
+						<label for="questions">Questions</label>
+						<img class="add-question-button" src="../../static/Plus.svg" />
+					</div>
+					{{ questions }}
 				</div>
 				<button type="submit" class="button">Submit</button>
 			</form>
 		</div>
+		<script>
+			$(document).ready(function () {
+				$(".add-question-button").on("click", function () {
+					var q = {{ questions }};
+					var questionCount = 1;
 
+					var questionWrapper = $("<div>").addClass(
+						"form-group question-wrapper"
+					);
+
+					var questionInput = $("<input>").attr({
+						type: "text",
+						class: "form-control",
+						id: "question" + questionCount,
+						for: "question" + questionCount,
+						name: "question" + questionCount,
+						required: true,
+					});
+					var deleteButton = $("<button>")
+						.attr({
+							type: "button",
+							class: "delete-button",
+						})
+						.html("&times;");
+
+					deleteButton.on("click", function () {
+						questionWrapper.remove();
+					});
+
+					questionWrapper.append(questionInput, deleteButton);
+					$(".add-question").after(questionWrapper);
+					questionCount++;
+				});
+			});
+		</script>
 		<script
 			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
