@@ -67,7 +67,7 @@
 			$(document).ready(function () {
 				var q = "{{ questions }}";
 				var delimiter = "{{ _delimit }}";
-				var qs = q.split(delimiter)
+				var qs = q.split(delimiter);
 
 				var questionCount = 0;
 
@@ -76,9 +76,17 @@
 						"form-group question-wrapper"
 					);
 
-					var questionDisplay = $("<div>")
+					var questionDisplay = $("<input>")
 						.text(questionText)
-						.addClass("question-display");
+						.addClass("question-display")
+						.attr({
+							type: "text",
+							class: "form-control",
+							id: "question" + questionCount,
+							for: "question" + questionCount,
+							name: "question" + questionCount,
+							required: true,
+						});
 
 					var deleteButton = $("<button>")
 						.attr({
@@ -101,7 +109,7 @@
 				}
 
 				$(".add-question-button").on("click", function () {
-					addQuestion("New Question");
+					addQuestion("Fuck");
 				});
 			});
 		</script>
