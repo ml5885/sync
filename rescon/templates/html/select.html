@@ -59,7 +59,6 @@
 						<label for="questions">Questions</label>
 						<img class="add-question-button" src="../../static/Plus.svg" />
 					</div>
-					{{ questions }}
 				</div>
 				<button type="submit" class="button">Submit</button>
 			</form>
@@ -67,6 +66,9 @@
 		<script>
 			$(document).ready(function () {
 				var q = "{{ questions }}";
+				var delimiter = "{{ _delimit }}";
+				var qs = q.split(delimiter)
+
 				var questionCount = 0;
 
 				function addQuestion(questionText) {
@@ -94,8 +96,8 @@
 					questionCount++;
 				}
 
-				for (var i = 0; i < q.length; i++) {
-					addQuestion(q[i]);
+				for (var i = 0; i < qs.length; i++) {
+					addQuestion(qs[i]);
 				}
 
 				$(".add-question-button").on("click", function () {

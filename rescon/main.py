@@ -6,6 +6,7 @@ from rescon.config import server_config
 from rescon.sources import switch_scrape
 
 app = Flask(__name__)
+DELIMIT = "&&&"
 
 @app.route("/", methods=["GET"])
 def index():
@@ -22,9 +23,10 @@ def form():
         return render_template("html/manual.html", text="Unsupported URL.")
     description = call(link).get_description()
     questions = call(link).get_questions()
+    questions = [q[0:-1] for q in questions]
     if not (questions or description):
         return render_template("html/manual.html", text="Questions or Description not found.")
-    return render_template("html/select.html", questions=questions)
+    return render_template("html/select.html", questions=DELIMIT.join(questions), _delimit=DELIMIT)
 
 @app.route("/submit", methods=["POST"])
 def submit():
