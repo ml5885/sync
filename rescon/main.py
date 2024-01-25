@@ -1,4 +1,5 @@
 import os
+import re
 from flask import Flask, render_template, request, send_file, jsonify
 from rescon.lib.pipeline import customize_resume, answer_questions, create_cover_letter
 from rescon.lib.formats import TEX_DIR
@@ -32,7 +33,9 @@ def form():
 def submit():
     server_config.openai_api_key = request.form["apiKey"]
     description = request.form["description"]
-    questions = request.form["questions"].split("\n")
+    keys = request.form.keys()
+    keys = [k for k in keys if re.search("question*", k)]
+    questions = [request.form[k] for k in keys]
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
     dtf, resume = customize_resume(description, resume)
