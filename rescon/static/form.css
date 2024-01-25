@@ -103,6 +103,11 @@ label {
 	cursor: pointer;
 }
 
+.question-display {
+	border: none;
+	resize: none;
+}
+
 @media (max-width: 800px) {
 	.form-group {
 		width: 400px;

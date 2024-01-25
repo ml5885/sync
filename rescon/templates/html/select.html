@@ -52,7 +52,9 @@
 						id="description"
 						name="description"
 						required
-					>{{ description }}</textarea>
+					>
+{{ description }}</textarea
+					>
 				</div>
 				<div class="add-question-wrapper">
 					<div class="add-question">
@@ -76,16 +78,16 @@
 						"form-group question-wrapper"
 					);
 
-					var questionDisplay = $("<input>")
+					var questionDisplay = $("<textarea>")
 						.val(questionText)
-						.addClass("question-display")
 						.attr({
 							type: "text",
-							class: "form-control",
+							class: "question-display form-control",
 							id: "question" + questionCount,
 							for: "question" + questionCount,
 							name: "question" + questionCount,
 							required: true,
+							rows: 2,
 						});
 
 					var deleteButton = $("<button>")
