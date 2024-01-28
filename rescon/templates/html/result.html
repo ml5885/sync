@@ -19,11 +19,37 @@
 	<body>
 		<div class="wrapper">
 			<div class="result">
-				<a href="/send/{{ data }}?file=pdf" target="_blank" class="button"
-					>Download PDF</a
-				>
-				<a href="/send/{{ data }}?file=tex" class="button">Download tex file</a>
+				<div class="resume-wrapper">
+					<a href="/send/{{ data }}?file=pdf" target="_blank" class="button"
+						>Download PDF</a
+					>
+					<a href="/send/{{ data }}?file=tex" class="button"
+						>Download tex file</a
+					>
+				</div>
+				<div class="result-questions"></div>
+				<div class="cover-letter">{{ cl }}</div>
 			</div>
 		</div>
+
+		<script>
+			$(document).ready(function () {
+				const questions = "{{ qas  }}";
+
+				console.log(questions);
+
+				const questionsContainer = $(".result-questions");
+
+				questions.forEach(function (qa) {
+					const questionElement = $("<div>").addClass("question").text(qa.q);
+					questionsContainer.append(questionElement);
+
+					const answerElement = $("<div>")
+						.addClass("answer")
+						.text("Answer: " + qa.a);
+					questionsContainer.append(answerElement);
+				});
+			});
+		</script>
 	</body>
 </html>

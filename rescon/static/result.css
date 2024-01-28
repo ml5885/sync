@@ -1,11 +1,8 @@
-body {
-	height: 100vh;
-}
-
 .result {
-	padding: 30px;
+	padding: 30px 200px;
 	width: 100%;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 }
 
@@ -19,4 +16,23 @@ body {
 
 .result .button:hover {
 	color: var(--highlight-color);
+}
+
+.resume-wrapper {
+	display: flex;
+	justify-content: space-around;
+}
+
+.result-questions {
+	display: flex;
+	flex-direction: column;
+}
+
+.result-questions .question {
+	padding: 0px 5px;
+}
+
+.result-questions .answer {
+	padding: 0px 5px;
+	padding-bottom: 20px;
 }
