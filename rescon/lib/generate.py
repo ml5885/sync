@@ -26,7 +26,7 @@ def _parse_tsv(str_tsv):
         "a": c.split("\t")[1]
     } for c in content]
 
-def customize(job_desc, xml, ag=GPT):
+def customize(job_desc, xml, ag=GPT()):
     data = DATA_RESUME_TEMPLATE.format(job=job_desc, xml_resume=xml)
     log = [SystemMessage(content=SYSTEM_RESUME_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
     is_valid = False
@@ -37,14 +37,14 @@ def customize(job_desc, xml, ag=GPT):
         if result: is_valid = True
     return result
 
-def answer(questions, resume, ag=GPT):
+def answer(questions, resume, ag=GPT()):
     data = DATA_QUESTION_TEMPLATE.format(questions=questions, resume=resume)
     log = [SystemMessage(content=SYSTEM_QUESTION_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
     str_response = ag.predict_messages(log)
     result = _parse_tsv(str_response.content)
     return result
 
-def create_cl(job, resume, ag=GPT):
+def create_cl(job, resume, ag=GPT()):
     data = DATA_CL_TEMPLATE.format(job=job, resume=resume)
     log = [SystemMessage(content=SYSTEM_CL_TEMPLATE), AIMessage(content=AGENT_RESPONSE), HumanMessage(content=data)]
     str_response = ag.predict_messages(log)

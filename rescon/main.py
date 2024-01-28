@@ -32,6 +32,7 @@ def form():
 @app.route("/submit", methods=["POST"])
 def submit():
     server_config.openai_api_key = request.form["apiKey"]
+    print(server_config.openai_api_key)
     description = request.form["description"]
     keys = request.form.keys()
     keys = [k for k in keys if re.search("question*", k)]
