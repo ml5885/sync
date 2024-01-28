@@ -45,13 +45,18 @@ def submit():
 
 @app.route("/send/<dtf>", methods=["GET"])
 def send(dtf):
-    if not os.path.isfile(f"{TEX_DIR}/{dtf}.tex"):
-        return "File not found."
+    # if not os.path.isfile(f"{TEX_DIR}/{dtf}.tex"):
+    #     return "File not found."
     ft = request.args.get("file", None, type=str)
+    # if ft == "pdf":
+    #     return send_file(f"{TEX_DIR}/{dtf}.pdf", as_attachment=False, mimetype='application/pdf', download_name=f"{dtf}.pdf")
+    # elif ft == "tex":
+    #     return send_file(f"{TEX_DIR}/{dtf}.tex", as_attachment=False, mimetype='application/x-latex', download_name=f"{dtf}.tex")
+    # return "Invalid file type."
     if ft == "pdf":
-        return send_file(f"{TEX_DIR}/{dtf}.pdf", as_attachment=False, mimetype='application/pdf', download_name=f"{dtf}.pdf")
+        return send_file(f"{TEX_DIR}/Tanush_Chopra_resume.pdf", as_attachment=False, mimetype='application/pdf', download_name=f"{dtf}.pdf")
     elif ft == "tex":
-        return send_file(f"{TEX_DIR}/{dtf}.tex", as_attachment=False, mimetype='application/x-latex', download_name=f"{dtf}.tex")
+        return send_file(f"{TEX_DIR}/Tanush_Chopra_resume.tex", as_attachment=False, mimetype='application/x-latex', download_name=f"{dtf}.tex")
     return "Invalid file type."
 
 if __name__ == "__main__":
