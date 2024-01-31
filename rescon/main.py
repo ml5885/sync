@@ -31,17 +31,16 @@ def form():
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    server_config.openai_api_key = request.form["apiKey"]
-    print(server_config.openai_api_key)
+    api_key = request.form["apiKey"]
     description = request.form["description"]
     keys = request.form.keys()
     keys = [k for k in keys if re.search("question*", k)]
     questions = [request.form[k] for k in keys]
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
-    dtf, resume = customize_resume(description, resume)
-    qas = answer_questions(questions, resume)
-    cl = create_cover_letter(description, resume)
+    dtf, resume = customize_resume(description, resume, api_key)
+    qas = answer_questions(questions, resume, api_key)
+    cl = create_cover_letter(description, resume, api_key)
     return render_template("html/result.html", data=dtf, qa=qas, cl=cl)
 
 @app.route("/send/<dtf>", methods=["GET"])
