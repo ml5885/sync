@@ -34,8 +34,8 @@
 
 		<script>
 			$(document).ready(function () {
-				const questions = "{{ qas  }}";
-
+				var questions = "{{ qas  }}";
+				questions = JSON.parse(questions);
 				console.log(questions);
 
 				const questionsContainer = $(".result-questions");
