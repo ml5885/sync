@@ -33,10 +33,21 @@
 		</div>
 
 		<script>
+			class HTMLDecoder {
+				constructor() {
+					this.parser = new DOMParser();
+				}
+				decode(input) {
+					const doc = this.parser.parseFromString(input, "text/html");
+					return doc.documentElement.textContent;
+				}
+			}
+
+			const decoder = new HTMLDecoder();
 			$(document).ready(function () {
-				var questions = "{{ qas  }}";
+				var questions = "{{ qa }}";
+				questions = decoder.decode(questions);
 				questions = JSON.parse(questions);
-				console.log(questions);
 
 				const questionsContainer = $(".result-questions");
 
