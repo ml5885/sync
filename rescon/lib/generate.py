@@ -3,6 +3,7 @@ from langchain.schema import (
     AIMessage,
     HumanMessage
 )
+import openai
 import xml.etree.ElementTree as ET
 from rescon.lib.model import GPT
 from rescon.lib.prompt import *
@@ -32,10 +33,30 @@ def customize(job_desc, xml, ag):
     is_valid = False
     result = None
     while not is_valid:
-        str_response = ag.predict_messages(log)
-        result = _parse_xml(str_response.content)
+        str_response = None
+        try:
+            str_response = ag.predict_messages(log)
+            result = _parse_xml(str_response.content)
+        except openai.error.AuthenticationError as e:
+            return (
+                "API key is not valid.",
+                False
+            )
+        except openai.error.PermissionError as e:
+            return (
+                "Account does not have permission to run GPT-4 Turbo model.",
+                False
+            )
+        except openai.error.RateLimitError as e:
+            return (
+                "Rate limit is too low for API key.",
+                False
+            )
         if result: is_valid = True
-    return result
+    return (
+        result,
+        True
+    )
 
 def answer(questions, resume, ag):
     data = DATA_QUESTION_TEMPLATE.format(questions=questions, resume=resume)

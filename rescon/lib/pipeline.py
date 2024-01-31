@@ -11,14 +11,15 @@ def customize_resume(job_desc, lines, api_key, dtf=None):
     dtf = dtf if dtf else datetime.now().timestamp()
     template = TEXTemplate(dtf)
     in_xml = template.build(lines)
-    out_xml = customize(
+    value, _pass = customize(
         job_desc,
         ET.tostring(in_xml, encoding="utf-8"),
         GPT(api_key)
     )
-    resume = template.modify(lines, out_xml)
+    if not _pass: return value, _pass
+    resume = template.modify(lines, value)
     # subprocess.Popen([f"{TEX_DIR}/generate_pdf.sh", f"{TEX_DIR}/{dtf}.tex", f"{TEX_DIR}/"]).wait()
-    return dtf, resume
+    return dtf, resume, _pass
 
 def create_cover_letter(job_desc, resume, api_key):
     return create_cl(
