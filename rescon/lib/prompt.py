@@ -28,6 +28,9 @@ SYSTEM_QUESTION_TEMPLATE = dedent('''\
     Do not lie about any content. \
     If you understand this, say "Done".''')
 
+TEST_TEMPLATE = dedent('''\
+    Respond with "Done."''')
+
 AGENT_RESPONSE = "Done."
 
 DATA_RESUME_TEMPLATE = PromptTemplate.from_template(
