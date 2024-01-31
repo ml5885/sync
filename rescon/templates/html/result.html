@@ -47,6 +47,7 @@
 			$(document).ready(function () {
 				var questions = "{{ qa }}";
 				questions = decoder.decode(questions);
+				questions = questions.replaceAll("'", '"');
 				questions = JSON.parse(questions);
 
 				const questionsContainer = $(".result-questions");
