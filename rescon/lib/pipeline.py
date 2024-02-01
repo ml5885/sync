@@ -1,5 +1,6 @@
 import subprocess
 from datetime import datetime
+import ray
 import xml.etree.ElementTree as ET
 from .formats.tex import TEXTemplate
 from .formats import TEX_DIR
@@ -11,16 +12,16 @@ def customize_resume(job_desc, lines, api_key, dtf=None):
     dtf = dtf if dtf else datetime.now().timestamp()
     template = TEXTemplate(dtf)
     in_xml = template.build(lines)
-    value, _pass = customize(
+    out_xml = customize(
         job_desc,
         ET.tostring(in_xml, encoding="utf-8"),
         GPT(api_key)
     )
-    if not _pass: return value, _pass
-    resume = template.modify(lines, value)
+    resume = template.modify(lines, out_xml)
     # subprocess.Popen([f"{TEX_DIR}/generate_pdf.sh", f"{TEX_DIR}/{dtf}.tex", f"{TEX_DIR}/"]).wait()
-    return dtf, resume, _pass
+    return dtf, resume
 
+@ray.remote
 def create_cover_letter(job_desc, resume, api_key):
     return create_cl(
         job_desc,
@@ -28,6 +29,7 @@ def create_cover_letter(job_desc, resume, api_key):
         GPT(api_key)
     )
 
+@ray.remote
 def answer_questions(questions, resume, api_key):
     questions = "Questions:\n" + "\n".join(questions)
     qas = answer(

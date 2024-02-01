@@ -1,12 +1,18 @@
 import os
 import re
+import ray
+import json
+from openai.error import AuthenticationError, PermissionError, RateLimitError
 from flask import Flask, render_template, request, send_file, jsonify
 from rescon.lib.pipeline import customize_resume, answer_questions, create_cover_letter
 from rescon.lib.formats import TEX_DIR
 from rescon.config import server_config
 from rescon.sources import switch_scrape
+from rescon.utils import handle_error
 
+ray.init()
 app = Flask(__name__)
+
 DELIMIT = "&&&"
 
 @app.route("/", methods=["GET"])
@@ -38,12 +44,16 @@ def submit():
     questions = [request.form[k] for k in keys]
     resume = request.files["file"].readlines()
     resume = [l.decode("utf-8") for l in resume]
-    cre = customize_resume(description, resume, api_key)
-    if not cre[-1]:
-        render_template("html/error.html", msg=cre[0])
-    qas = answer_questions(questions, cre[1], api_key)
-    cl = create_cover_letter(description, resume, api_key)
-    return render_template("html/result.html", data=cre[0], qa=qas, cl=cl)
+    template = None
+    try:
+        dtf, data = customize_resume(description, resume, api_key)
+        qas_id = answer_questions.remote(questions, data, api_key)
+        cl_id = create_cover_letter.remote(description, data, api_key)
+        qas, cl = ray.get([qas_id, cl_id])
+        template = render_template("html/result.html", data=dtf, qa=json.dumps(qas), cl=cl)
+    except (AuthenticationError, PermissionError, RateLimitError) as e:
+        template = render_template("html/error.html", msg=handle_error(e))
+    return template
 
 @app.route("/send/<dtf>", methods=["GET"])
 def send(dtf):
