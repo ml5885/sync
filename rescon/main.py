@@ -6,7 +6,6 @@ from openai.error import AuthenticationError, PermissionError, RateLimitError
 from flask import Flask, render_template, request, send_file, jsonify
 from rescon.lib.pipeline import customize_resume, answer_questions, create_cover_letter
 from rescon.lib.formats import TEX_DIR
-from rescon.config import server_config
 from rescon.sources import switch_scrape
 from rescon.utils import handle_error
 
@@ -59,19 +58,15 @@ def submit():
 
 @app.route("/send/<dtf>", methods=["GET"])
 def send(dtf):
-    # if not os.path.isfile(f"{TEX_DIR}/{dtf}.tex"):
-    #     return "File not found."
+    if not os.path.isfile(f"{TEX_DIR}/{dtf}.tex"):
+        return render_template("html/error.html", msg="File not on server")
     ft = request.args.get("file", None, type=str)
-    # if ft == "pdf":
-    #     return send_file(f"{TEX_DIR}/{dtf}.pdf", as_attachment=False, mimetype='application/pdf', download_name=f"{dtf}.pdf")
-    # elif ft == "tex":
-    #     return send_file(f"{TEX_DIR}/{dtf}.tex", as_attachment=False, mimetype='application/x-latex', download_name=f"{dtf}.tex")
-    # return "Invalid file type."
     if ft == "pdf":
-        return send_file(f"{TEX_DIR}/Tanush_Chopra_resume.pdf", as_attachment=False, mimetype='application/pdf', download_name=f"{dtf}.pdf")
+        return send_file(f"{TEX_DIR}/{dtf}.pdf", as_attachment=False, mimetype='application/pdf', download_name=f"{dtf}.pdf")
     elif ft == "tex":
-        return send_file(f"{TEX_DIR}/Tanush_Chopra_resume.tex", as_attachment=False, mimetype='application/x-latex', download_name=f"{dtf}.tex")
-    return "Invalid file type."
+        return send_file(f"{TEX_DIR}/{dtf}.tex", as_attachment=False, mimetype='application/x-latex', download_name=f"{dtf}.tex")
+    return render_template("html/error.html", msg="Invalid file type.")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
