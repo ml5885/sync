@@ -15,6 +15,8 @@ SYSTEM_CL_TEMPLATE = dedent('''\
     I will give you a job and a resume. \
     I want you to create a cover letter for the job based on the resume. \
     Do not lie about any content. \
+    Do not add any additional formatting details. \
+    It should be plain text. \
     If you understand this, say "Done".''')
 
 SYSTEM_QUESTION_TEMPLATE = dedent('''\
@@ -54,6 +56,7 @@ DATA_QUESTION_TEMPLATE = PromptTemplate.from_template(
         ```resume
         {resume}
         ```\
+        QUESTION\tANSWER
     ''')
 )
 

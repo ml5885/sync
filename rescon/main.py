@@ -47,6 +47,8 @@ def submit():
     template = None
     try:
         dtf, data = customize_resume(description, resume, api_key)
+        if not dtf:
+            return render_template("html/error.html", msg=data)
         qas_id = answer_questions.remote(questions, data, api_key)
         cl_id = create_cover_letter.remote(description, data, api_key)
         qas, cl = ray.get([qas_id, cl_id])
