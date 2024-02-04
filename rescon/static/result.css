@@ -1,3 +1,28 @@
+.wrapper {
+	justify-content: flex-start;
+}
+
+.tabs {
+	display: flex;
+	gap: 50px;
+}
+
+.tab-link {
+	font-size: 18px;
+	color: var(--font-color);
+	text-decoration: none;
+}
+
+.tab-link:hover {
+	color: var(--font-color);
+	text-decoration: underline;
+}
+
+.tab-link.active {
+	color: var(--font-color);
+	text-decoration: underline;
+}
+
 .result {
 	padding: 30px 200px;
 	width: 100%;
@@ -10,8 +35,8 @@
 	background-color: var(--font-color);
 	color: var(--highlight-color);
 	width: 250px;
-	font-size: 20px;
-	padding: 20px;
+	font-size: 18px;
+	padding: 10px 20px;
 }
 
 .result .button:hover {
@@ -20,16 +45,30 @@
 
 .resume-wrapper {
 	display: flex;
-	justify-content: space-around;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 100px 0px;
+}
+
+.cover-letter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 100px 0px;
 }
 
 .result-questions {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 100px 0px;
 }
 
 .result-questions .question {
-	padding: 0px 5px;
+	padding: 5px;
 }
 
 .result-questions .answer {

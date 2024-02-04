@@ -18,17 +18,28 @@
 	</head>
 	<body>
 		<div class="wrapper">
+			<h1>ResCon</h1>
+			<div class="tabs">
+				<a href="#" class="tab-link" id="resume-tab">Resume</a>
+				<a href="#" class="tab-link" id="cover-letter-tab">Cover Letter</a>
+				<a href="#" class="tab-link" id="questions-tab">Questions</a>
+			</div>
+
 			<div class="result">
 				<div class="resume-wrapper">
 					<a href="/send/{{ data }}?file=pdf" target="_blank" class="button"
-						>Download PDF</a
+						>Download Resume PDF</a
 					>
 					<a href="/send/{{ data }}?file=tex" class="button"
-						>Download tex file</a
+						>Download Resume tex file</a
 					>
 				</div>
 				<div class="result-questions"></div>
-				<div class="cover-letter">{{ cl }}</div>
+				<div class="cover-letter">
+					<a href="#" class="button" id="download-cover-letter"
+						>Download Cover Letter PDF</a
+					>
+				</div>
 			</div>
 		</div>
 
@@ -47,7 +58,6 @@
 			$(document).ready(function () {
 				var questions = "{{ qa }}";
 				questions = decoder.decode(questions);
-				questions = questions.replaceAll("'", '"');
 				questions = JSON.parse(questions);
 
 				const questionsContainer = $(".result-questions");
@@ -61,6 +71,28 @@
 						.text("Answer: " + qa.a);
 					questionsContainer.append(answerElement);
 				});
+
+				$(".tab-link").on("click", function () {
+					$(".tab-link").removeClass("active");
+					$(this).addClass("active");
+
+					if ($(this).attr("id") === "resume-tab") {
+						$(".resume-wrapper").show();
+						$(".cover-letter").hide();
+						$(".result-questions").hide();
+					} else if ($(this).attr("id") === "cover-letter-tab") {
+						$(".resume-wrapper").hide();
+						$(".cover-letter").show();
+						$(".result-questions").hide();
+					} else if ($(this).attr("id") === "questions-tab") {
+						$(".resume-wrapper").hide();
+						$(".cover-letter").hide();
+						$(".result-questions").show();
+					}
+				});
+
+				$(".cover-letter").hide();
+				$(".result-questions").hide();
 			});
 		</script>
 	</body>
