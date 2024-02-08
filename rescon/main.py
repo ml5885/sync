@@ -29,6 +29,7 @@ def form():
         return render_template("html/manual.html", text="Unsupported URL.")
     description = call(link).get_description()
     questions = call(link).get_questions()
+    print(questions)
     questions = [q[0:-1] for q in questions]
     if not (questions or description):
         return render_template("html/manual.html", text="Questions or Description not found.")
