@@ -58,7 +58,7 @@ def answer(questions, resume, ag):
     result = None
     while not is_valid:
         str_response = ag.predict_messages(log)
-        is_valid, result = _parse_tsv(str_response.content)
+        is_valid, result = _parse_tsv(str_response.content, questions)
     return result
 
 def create_cl(job, resume, ag):

@@ -4,7 +4,7 @@ from langchain.prompts import PromptTemplate
 SYSTEM_RESUME_TEMPLATE = dedent('''\
     I will give you a job and a resume in an XML format. \
     I want you to change the resume by adding details and changing the wording of the content in the resume so that it appeals to the job. \
-    Do not lie about any content. \
+    Do not lie too much about any content. \
     It should be subtle and mainly rely on keywords rather than explicit statements. \
     Keep the exact same LaTex formatting and only change the content provided. \
     Make sure to return the response as an XML in the same format as the resume given. \
@@ -21,13 +21,12 @@ SYSTEM_CL_TEMPLATE = dedent('''\
 
 SYSTEM_QUESTION_TEMPLATE = dedent('''\
     I will give you a set of questions and a resume. \
-    I want you to answer the questions to the best of your ability given the resume. \
+    I want you to answer the questions even if you have to lie. \
     The returned responses should be in a strict tab-separated format such that it conforms to the following general format:
         QUESTION\tANSWER
         QUESTION_1\tANSWER_1
         ...
         QUESTION_N\tANSWER_N
-    Do not lie about any content. \
     If you understand this, say "Done".''')
 
 TEST_TEMPLATE = dedent('''\
